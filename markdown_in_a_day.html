@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>markdown_in_72min.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol>
+<li><a href="#1--heading-in-markdown">Heading in markdown</a></li>
+<li><a href="#2--blocks-of-text">Blocks of Text</a></li>
+<li><a href="#3--line-breaks">Line Breaks</a></li>
+<li><a href="#4--combining-two-elements">Combining Two Elements</a></li>
+<li><a href="#5--text-styling">Text Stylingt</a></li>
+<li><a href="#6---bullet-points--lists-in-markdown">Bullet Points / Lists in Markdown</a></li>
+<li><a href="#7--creating-a-line">Creating a Line</a></li>
+<li><a href="#8--links-and-hyperlinks">Links and Hyperlinks</a></li>
+<li><a href="#9--images-and-figures-with-link">Images and Figures with Link</a></li>
+<li><a href="#10--writing-code-blocks-in-markdown-and-different-programming-languages">Writing Code Blocks in Markdown and Different Programming Languages</a></li>
+<li><a href="#11--creating-or-adding-table">Creating or Adding Table</a></li>
+<li><a href="#12--create-content-list">Create Content List</a></li>
+<li><a href="#13--useful-markdown-extensions">Useful Markdown Extensions</a></li>
+<li><a href="#14--commenting-out-in-markdown">Commenting Out In Markdown</a></li>
+<li><a href="#15--checkboxes-in-markdown">Checkboxes in Markdown</a></li>
+<li><a href="#16--adding-footnote">Adding Footnote</a></li>
+<li><a href="#17--adding-emoji">Adding Emojis In Markdown</a></li>
+<li><a href="#18--adding-alerts-warning-note-and-bulb-logo-aka-admonitions">Adding Alert / Admonitions</a></li>
+</ol>
+<h1 id="1--heading-in-markdown">1- Heading in markdown.</h1>
+<p>In Markdown, there are six levels of headings, and you can create them by using hashtags (#) followed by a space. The number of hashtags determines the heading level, and the font size decreases as you add more hashtags. Here are the headings:</p>
+<h1 id="heading-1">Heading 1</h1>
+<h2 id="heading-2">Heading 2</h2>
+<h3 id="heading-3">Heading 3</h3>
+<h4 id="heading-4">Heading 4</h4>
+<h5 id="heading-5">Heading 5</h5>
+<h6 id="heading-6">Heading 6</h6>
+<h1 id="2--blocks-of-text">2- Blocks of Text</h1>
+<p>In Markdown, a block of text means that everything you write is represented as a distinct block. Notion, a popular app, employs this method to structure text. Each line or entry in Notion constitutes a block of text.</p>
+<p>Now, let's distinguish between &quot;Blocks of Text&quot; and &quot;Plain Text&quot; in Markdown. For &quot;Plain Text,&quot; you start writing without any special symbols or codes, just like you would in a word processor. Markdown files (.md) naturally display plain text. In contrast, for &quot;Blocks of Text,&quot; you use the &quot;&gt;&quot; symbol, followed by your text, to create this distinctive block.</p>
+<p>Here's an example of creating a &quot;Block of Text&quot; using the &quot;&gt;&quot; symbol. There's no need for a space after the &quot;&gt;&quot; symbol; you can start writing immediately:</p>
+ <!-- In markdown the code will continue as "Block of Code" untill you press the "ENTER keyboard key" twice --> 
+<blockquote>
+<p>First example of writing a 'Block of Text': My name is Ali, and I'm learning the Markdown language. Markdown is a great language for people new to coding, as it boosts their enthusiasm.</p>
+</blockquote>
+<blockquote>
+<p>Second Example: If you want to increase the line spacing in Markdown, all you have to do is write another &quot;&gt;&quot; symbol, press &quot;Enter,&quot; and start writing again with another &quot;Block of Text&quot; symbol &quot;&gt;&quot;.</p>
+<p>start writiing again with another  &quot;Block_of_Words &quot; symbol &quot;&gt;&quot;. Just like we did in this example.</p>
+</blockquote>
+<blockquote>
+<p>Third Example: If you want to create an empty space between two &quot;Blocks of Text,&quot; simply double-press &quot;Enter&quot; from the keyboard, and then start writing your new &quot;Block of Text.&quot;</p>
+</blockquote>
+<blockquote>
+<p>Just like this.</p>
+</blockquote>
+<h1 id="3--line-breaks">3- Line Breaks</h1>
+<p>Line breaks are important for separating paragraphs or indicating other divisions in your text. In Markdown, there are several methods to create line breaks.</p>
+<p>The first and most straightforward method is to double-press the &quot;Enter&quot; key from your keyboard.</p>
+<p>The second method involves using a backslash \ to end the paragraph and start a new line. However, this method is not always reliable and is not recommended.</p>
+<p>The third method is widely used and recommended. You can use the <br> HTML line break tag to create a line break in your Markdown text. For example, you can write <br> to start a new line.</p>
+<h1 id="4--combining-two-elements">4- Combining Two Elements</h1>
+<p>In Markdown, combining two features is common and requires practice. For example, if you want to write something as a <code>heading</code> and also include a <code>block of text</code> along with it, you can do the following:</p>
+<blockquote>
+<p>All you need is:  <code>&gt; # Write here</code>. The code will be written in a block of words and heading size will be there. As you can see below.</p>
+</blockquote>
+<blockquote>
+<h1 id="this-is-combination-of-two-feature-in-markdown">This is combination of two feature in markdown</h1>
+</blockquote>
+<h1 id="5--text-styling">5- Text Styling</h1>
+<p>How to style your text:
+<br>&quot;Bold&quot;
+<br> &quot;Italic&quot;
+<br> &quot;Bold and Italic
+<br> &quot; Strikethrough&quot;</p>
+<h3 id="method-1">Method 1:</h3>
+<p>Using Asterisks * <br></p>
+<p><em>Single Start in the start and in the end will Make the text Italic</em></p>
+<p><strong>Double Stars will make the text BOLD</strong></p>
+<p><em><strong>Three stars in the start and end of the selected text will make teh text bold and italic together</strong></em></p>
+<!-- Remember There should be no spaces in between start and also text will start right after you apply start not like "Heading" where you need to give space after you write #--> 
+<h4 id="second-method-to-use-to-make-text-italic-bold-and-both">Second method to use to make text italic, bold and both :</h4>
+<p><em>Use the SINGLE underscore around the text without the space to make text italic</em> <br></p>
+<p><strong>Use double underscore on both side of text together without space and the text will be bold</strong> <br><br>
+<em><strong>To make the text bold and italic together use the underscore three times all together without spaces.</strong></em></p>
+<p>To make a line <code>strikethrough</code> use the double <code>tildes</code> on both side <code>~~</code> of the statement: e.g:
+<s>I am enjoying learning Markdown</s></p>
+<h1 id="6---bullet-points--lists-in-markdown">6 - Bullet Points / Lists in Markdown</h1>
+<ul>
+<li>Day 1</li>
+<li>Day 2</li>
+<li>Day 3</li>
+</ul>
+<blockquote>
+<p>In Markdown to create a list without numbering a.ka unordered list you have to do following :
+You have to use &quot;dash and a space&quot; just like this &quot;- &quot; to create a bullet point in the MARKDOWN. ___A space after - (dash) is very important i.e - .<em><strong>Otherwise the list will not be created</strong></em></p>
+</blockquote>
+<h3 id="lets-see-how-we-can-subbullets-of-a-a-bullet"><strong>Let's see how we can subbullets of a a bullet:</strong></h3>
+<p>To create sub-bullets, you can apply the same rules used for normal bullets and apply indentation.</p>
+<blockquote>
+<p>Example 1</p>
+</blockquote>
+<ul>
+<li>This is the first bullet.
+<ul>
+<li>This is 1st sub_bullet<!-- Single Indentation to parent bullet-->
+<ul>
+<li>This is 2nd sub_bullet .<!-- Single Indentation to sub_bullet-->
+<ul>
+<li>This is 3rd sub_bullet.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Exmaple 2 for sub_bullet:</p>
+</blockquote>
+<ul>
+<li>This is a bullet.
+<ul>
+<li>This is another sub_bullet of a bullet.</li>
+<li>This is another sub_bullet of a bullet point .</li>
+</ul>
+</li>
+<li>Now we create a new bullet.</li>
+</ul>
+<blockquote>
+<p>To create a <strong>Numbered List</strong>, you use a number followed by a full stop and a space, such as &quot;1. &quot; or &quot;33. &quot;. The space is important, or it won't be turned into a list. The rules for sub-numbering are similar to sub-bullets.</p>
+</blockquote>
+<ol>
+<li>This is number 1.</li>
+<li>This is number 2
+<ol>
+<li>This is 1st first sub number of Number 2.</li>
+<li>This is 2nd sub number of Number 2.</li>
+</ol>
+</li>
+<li>This is Number 3.</li>
+</ol>
+<blockquote>
+<p>You can also create lists or bullet points using two different symbols: &quot;(+ ) plus with a space&quot; and &quot;(* ) single star with a space.&quot;</p>
+</blockquote>
+<p>Example with &quot;+&quot;:</p>
+<ul>
+<li>This is how we create bullet using + space.
+<ul>
+<li>Also the sub_bullet using + space</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>This is a way to create bullet using * and space.
+<ul>
+<li>This is a way to create sub_bullet using * space.
+<ul>
+<li>This is third tier of sub_bullet.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="7--creating-a-line">7- Creating a Line</h1>
+<p>We can create a line under something a full length line by three method</p>
+<ol>
+<li>Press dash three time ---</li>
+<li>Press underscore three times ___ .</li>
+<li>Press asteric three times ***</li>
+</ol>
+<p>First Example: Press dash three times ---</p>
+<hr>
+<p>Second example: Press underscore three times ___</p>
+<hr>
+<p>Third example: Press asteric three times ***</p>
+<hr>
+<h1 id="8--links-and-hyperlinks">8- Links and Hyperlinks</h1>
+<p>To create a hyperlink in Markdown, you have several methods depending on your requirements and how you want to represent the hyperlink. Let's explore them step by step.</p>
+<h4 id="method-1-simple-hyperlink">Method 1:  Simple Hyperlink :</h4>
+<p>The simplest way to insert a hyperlink in Markdown is to paste the URL directly. For example, if I want to post a hyperlink to my YouTube channel, I can simply provide the URL:</p>
+<p>https://www.youtube.com/channel/UCZBHJ6x6tcwkOq21x4lfGqg/ .</p>
+<h4 id="method-2-creating-a-hyperlink-text">Method 2: Creating a Hyperlink Text</h4>
+<p>n this method, you create a clickable text that directs to the desired website. To do this, you first create the text you want to display to your audience inside square brackets [], and then you insert the original hyperlink within parentheses ().
+<a href="https://www.youtube.com/channel/UCZBHJ6x6tcwkOq21x4lfGqg/">This is Ali Talha YouTube Channel</a></p>
+<p>This text will appear as a clickable link: This is Ali Talha's YouTube Channel</p>
+<h4 id="method-3-creating-a-hyperlink-with-a-variable">Method 3: Creating a Hyperlink with a Variable</h4>
+<p>This method is useful when you want to highlight specific text within a paragraph and link it to a particular URL. It allows you to create a kind of variable in Markdown that can be reused throughout your document.</p>
+<p>The process for creating a variable in Markdown involves these steps:</p>
+<ol>
+<li>Create a variable name enclosed in square brackets [].</li>
+<li>Add a colon : immediately after the variable name.</li>
+<li>Insert the original hyperlink within parentheses ().
+For example, if you want to create a variable named &quot;My Channel&quot; that links to your YouTube channel:</li>
+</ol>
+<blockquote>
+<p>The format will look like this : [My Channel]: https://www.youtube.com/channel/UCZBHJ6x6tcwkOq21x4lfGqg/</p>
+</blockquote>
+<blockquote>
+<p>Important : When you create a variable [My channel] and put colon :. There should be no space between them. Later after colon you can put a space and insert the prenthesis () and write URL in prenthesis</p>
+</blockquote>
+<blockquote>
+<p><input type="checkbox" id="checkbox0"><label for="checkbox0">and without space put the variable in another  [ ]</label></p>
+</blockquote>
+<p>Now if i want to use that variable into my text . I will say that , guys do like my channel by clicking <a href="(https://www.youtube.com/channel/UCZBHJ6x6tcwkOq21x4lfGqg/)">here</a>.</p>
+<h1 id="9--images-and-figures-with-link">9 : Images and Figures with Link</h1>
+<p>In Markdown you cannot put your image directly from your own computer hard drive. Only ways are either host that image on web or either put that image in yuor IDE or Editor you are working on. Let's take a look one by one.</p>
+<h4 id="method-1-inserting-image-using-url">Method 1 :Inserting Image Using URL:</h4>
+<ul>
+<li>First you have to find an image you want to show in the file . Copy the url. In this example we are using this URL image of &quot;Markdown Logo &quot; . URL is : https://miro.medium.com/v2/resize:fit:828/format:webp/1*eZ7YPTqzcyFVoQxIOIQ9kQ.png  .</li>
+<li>Now we will use the same process what we did in creating a hyperlink . [Name we want to display](the url address)</li>
+<li>But, to show image in our file we use exclamation mark on the start of the code &quot;!&quot;. So it will look like this :</li>
+</ul>
+<pre class="hljs"><code><div>![<span class="hljs-string">name_to_display</span>](<span class="hljs-link">the_url_address</span>)
+
+</div></code></pre>
+<p><img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*eZ7YPTqzcyFVoQxIOIQ9kQ.png" alt="This is Muhammad Ali Boxer"></p>
+<h4 id="method-2-inserting-image-using-editor-eg-vs-code">Method 2 :Inserting Image using Editor (e.g VS code):</h4>
+<ul>
+<li>Download the image you want to include in your Markdown file and copy it into the same folder where you are creating the Markdown document.</li>
+<li>Rename the image to whatever you like.</li>
+<li>Use the exclamation mark ! to start the code, followed by the name you want to display in square brackets []. Then, inside parentheses (), write the image's filename, including the extension.</li>
+</ul>
+<p><img src="Muhammad_Ali.jpg" alt="Muhamamd Ali Boxer"></p>
+<h4 id="method-2--reference-style-for-image">Method 2 : Reference Style for Image:</h4>
+<ul>
+<li>In this method you define the Reference for the image URL.</li>
+<li>This method involves square brackets.</li>
+<li>You have to create two set of square brackets side by side [][].</li>
+<li>In first square bracket [] you write the <code>name to display</code></li>
+<li>In second bracket [] , you put a Reference name e.g <code>ref1</code></li>
+<li>After that at the bottom of your markdown file you put that Reference in this style [ref1]: the name of the url.</li>
+</ul>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/c919c1649f9bd8c95b2acf4b2d79bd8d03221068/c4b1c/static/img/blog/linting-markdown-files-with-markdownlint.jpg" alt="image"></p>
+<h1 id="10--writing-code-blocks-in-markdown-and-different-programming-languages">10- Writing Code Blocks in Markdown and Different Programming Languages</h1>
+<p>This is one of the most widely used methods in Markdown and is essential to learn. It allows you to include code blocks in your Markdown document and differentiate between different programming languages. Additionally, you can highlight a single line of code. Let's explore both methods step by step.</p>
+<h4 id="method-1-writing-a-single-line-code-br">Method 1: Writing a single line code <br></h4>
+<ul>
+<li>To insert a single line of code in Markdown, you can use backticks. Place one backtick before the start of the code and one backtick after the code.</li>
+<li>The backtick can be found on the keyboard's upper numeric keys, typically on the extreme left side. <code>      </code></li>
+<li>Let's see and example :</li>
+</ul>
+<pre class="hljs"><code><div>print(This <span class="hljs-keyword">is</span> an example of single line of code writting <span class="hljs-keyword">in</span> python)
+</div></code></pre>
+<h4 id="method-2-writing-a-block-of-code">Method 2: Writing a Block of Code:</h4>
+<ul>
+<li>To insert a block of code, you need to use three backticks at the start, press Enter, and then use three backticks at the end.</li>
+</ul>
+<pre class="hljs"><code><div>press enter and  three back ticks in the end .
+</div></code></pre>
+<ul>
+<li>You write the code in between the three backtics.</li>
+<li>You can also specify the programming language name after first three backticks so it will show the same language coloring and output.</li>
+</ul>
+<pre class="hljs"><code><div>a = 5
+b = 10
+c = a + b
+</div></code></pre>
+<pre class="hljs"><code><div>First_name  = <span class="hljs-string">'Ali'</span>
+Last_name = <span class="hljs-string">'Talha'</span>
+full_name = First_name + Last_name
+<span class="hljs-comment"># This block of code show that this code is written in python</span>
+</div></code></pre>
+<p>These methods allow you to seamlessly integrate code into your Markdown document, making it a powerful tool for documenting and sharing code-related content.</p>
+<h1 id="11--creating-or-adding-table">11- Creating or Adding Table:</h1>
+<p>We can create tables in MARKDOWN using the symbol &quot;PIPE&quot; which is &quot;|&quot;.</p>
+<ul>
+<li>It is a good practice in creating or defining the table that we create headers first.</li>
+<li>The syntax for writting the header in MARKDOWN is</li>
+</ul>
+<pre class="hljs"><code><div>|Column<span class="hljs-emphasis">_1 | Column_</span>2|Column_3|  
+|---------|---------|--------|
+</div></code></pre>
+<ul>
+<li>The second line of code after you define , the column name is helpful to identify the column block in markdown so you can input data.</li>
+<li>Also, the second line of code is further use to align the data in left, right and middle of the column.</li>
+<li>To align the data in the left side you put colon on the left  in the second line of code which you created after the header</li>
+</ul>
+<pre class="hljs"><code><div>|Column<span class="hljs-emphasis">_1 | Column_</span>2|Column_3|
+|:---------|:---------|:--------|
+</div></code></pre>
+<blockquote>
+<p>the above block of code will align the data in column to the left</p>
+</blockquote>
+<ul>
+<li>To align the data in the &quot;Right side&quot; you put colon on the &quot;Right&quot;  in the second line of code which you created after the header</li>
+</ul>
+<pre class="hljs"><code><div>|Column<span class="hljs-emphasis">_1 | Column_</span>2|Column_3|
+|---------:|---------:|--------:|
+
+</div></code></pre>
+<blockquote>
+<p>The above block of code will align the data in column to the Right</p>
+</blockquote>
+<ul>
+<li>To align the data in the &quot;MIDDLE&quot; you put colon on the &quot;both sides&quot;  in the second line of code which you created after the header</li>
+</ul>
+<pre class="hljs"><code><div>|Column<span class="hljs-emphasis">_1 | Column_</span>2|Column_3|
+|:---------:|:---------:|:--------:|
+
+</div></code></pre>
+<blockquote>
+<p>the above block of code will align the data in column to the Right</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Column_1</th>
+<th>Column_2</th>
+<th>Column_3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ali</td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+<tr>
+<td>Ali</td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+<tr>
+<td>Ali</td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+<tr>
+<td><em>Ali</em></td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+<tr>
+<td>Ali</td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+<tr>
+<td>Ali</td>
+<td>Talha</td>
+<td>Ali_Talha</td>
+</tr>
+<tr>
+<td>Rizwan</td>
+<td>Ahmad</td>
+<td>Rizwan_Ahmad</td>
+</tr>
+</tbody>
+</table>
+<h1 id="12--create-content-list">12- Create Content List</h1>
+<ul>
+<li>This method allows you to create a clickable table of contents for your Markdown document, making it easy for readers to navigate to specific sections or headings.</li>
+<li>In order to create a content list so when you click on a link it will leads to the specfic heading or area.
+This is more like a content of a book.</li>
+<li>To Create a Contect of your page. You follow the same rule as you created URL link. e.g [Name to Display](#22--The area where you want to go)</li>
+</ul>
+<p><a href="#1--heading-in-markdown">Heading</a><br>
+<a href="#2--block-of-words">Block of Words</a><br>
+<a href="#3--line-breaks">Line Breaks</a><br>
+<a href="#4--combine-two-things">Combine Two Things</a><br>
+<a href="#5--face-of-text">Face Of Text</a><br>
+<a href="#6---bullet-points--lists-writting-in-markdown">Bullet Points and List Writting</a><br>
+<a href="#7--create-a-line">Create A Line</a><br>
+<a href="#8--links-and-hyperlink">Creating Link and Hyperlin</a><br>
+<a href="#9--images-and-figures-with-link">Inserting Images and Figures</a><br>
+<a href="#10--creating-or-adding-table">Creating Tables In Markdown</a><br>
+<a href="#11--create-content-list">Create Content List</a><br>
+<a href="#12--extensions-for-markdown">Extensions for Markdown</a></p>
+<h1 id="13--useful-markdown-extensions">13- Useful Markdown Extensions</h1>
+<ol>
+<li>Markdown All In One <a href="https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one">Website</a>.</li>
+<li>Markdown Pdf <a href="https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf">Website</a>.</li>
+<li>MarkdownLint <a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">Website</a></li>
+<li>Markdown Shortcuts<a href="https://marketplace.visualstudio.com/items?itemName=mdickin.markdown-shortcuts">Website</a>.</li>
+<li>Markdown Preview Enhanced <a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Website</a>.</li>
+<li>Markdown Footnotes<a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-footnotes">Website</a></li>
+<li>Markdown Emoji <a href="https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji">Website</a></li>
+</ol>
+<h1 id="14--commenting-out-in-markdown">14- Commenting out In Markdown:</h1>
+<ul>
+<li>
+<p>Commenting out in Markdown involves adding comments to your document. Comments are lines of text that are not rendered in the output and are used for adding notes, explanations, or annotations within your Markdown file.</p>
+</li>
+<li>
+<p>Commenting out means marking certain lines of text or statements for reference, which will not be displayed in the output.
+This feature is employed in almost all programming languages.
+Markdown borrows the commenting out feature from HTML. To comment out a piece of text or a statement, you can use the following syntax:</p>
+<blockquote>
+<p><code>&lt;!-- Your code or statment yo uwant to comment out will go here --&gt;</code></p>
+</blockquote>
+</li>
+</ul>
+<h1 id="15--checkboxes-in-markdown">15- Checkboxes In Markdown</h1>
+<p>Creating a checklist or checkboxes is also possible in Markdown. To do so, you need to create a list first using <code>- </code> teccnique which is also used to create bullet, as we learn <a href="#11--create-content-list">earlier</a>, then you need <code>square brakets</code>  which is represented by <code>[ ]</code> . with a s <code>space </code> inside</p>
+<blockquote>
+<p>e.g <input type="checkbox" id="checkbox1"><label for="checkbox1">i am ali</label></p>
+</blockquote>
+<ul>
+<li><input type="checkbox" id="checkbox2"><label for="checkbox2">I am learning Python</label></li>
+<li><input type="checkbox" id="checkbox3"><label for="checkbox3">Markdown is fun. </label><br></li>
+</ul>
+<p>In order to place a check mark. Inside the square bracket you need to put &gt; <code>x</code> inside the square brackets.</p>
+<p>You can also created nedted checklist following the same <a href="#11--create-content-list">List</a> method.</p>
+<ul>
+<li><input type="checkbox" id="checkbox4"><label for="checkbox4">List 1</label></li>
+<li><input type="checkbox" id="checkbox5"><label for="checkbox5">List 2</label></li>
+<li><input type="checkbox" id="checkbox6"><label for="checkbox6">List 3</label>
+<ul>
+<li><input type="checkbox" id="checkbox7"><label for="checkbox7">List 5</label></li>
+<li><input type="checkbox" id="checkbox8" checked="true"><label for="checkbox8">List 6</label></li>
+</ul>
+</li>
+</ul>
+<h1 id="16--adding-footnote">16- Adding FootNote:</h1>
+<p>Footnote is helpful if you are want to give Reference of some documnt in the footnote of your page.
+In order to create footnote these are the steps :</p>
+<ol>
+<li>Create a square brakets [ ]</li>
+<li>Inside the square brackets you have to make a symbol of &quot;Caret&quot; i.e. <code>^</code>.  The keyboard shorcut is <code> shift + 5</code></li>
+<li>After &quot;Caret&quot; Inside the square bracket write the number of the footnote as you desire . Could be 5,6,7 etc</li>
+<li>Once you have created the footnote, then you have to go where you want to put the detail of that footnote and write the same number in square brackets with caret. Put colon <code>:</code> after that and write the Reference details.</li>
+</ol>
+<p>Here is a simple footnote[^5]</p>
+<pre class="hljs"><code><div>The sample to create a footnote . <span class="hljs-code">`How to create a footnote [^4]`</span>
+</div></code></pre>
+<p>[^5]: Foot Note Example</p>
+<h1 id="17--adding-emoji">17- Adding Emoji:</h1>
+<p>Adding emoji in markdown is Possible.</p>
+<ol>
+<li>First you have to download the extension for that check list of all <a href="#12--extensions-for-markdown">Extensions Here</a></li>
+<li>You need codes for the emoji, here is the <a href="https://www.webfx.com/tools/emoji-cheat-sheet/">Cheat Sheet</a> for emojis.</li>
+<li>Copy the emoji code  from the website and paste in your markdown file 😋</li>
+<li>Sometime you have to write the code betwee two colons e.g <code>:efdfdf:</code></li>
+</ol>
+<h1 id="18--adding-alerts-warning-note-and-bulb-logo-aka-admonitions">18- Adding Alerts <code>Warning</code>, <code>Note</code> and <code>Bulb</code> Logo aka Admonitions:</h1>
+<p>Just like whule reading a book you get some highlited text with a smal tiny logo representing why this highlited text is important. you can do the same as in Markdown.</p>
+<ol>
+<li>In Markdown you can add three type of Alerts or they also called Admonitons.</li>
+<li>The syntax is  create a block of code first usin <code>&gt;</code></li>
+<li>Create two colons <code>::</code> in between those  colon write <code>memo</code>, <code>warning</code> or <code>bulb</code>.
+Markdown</li>
+</ol>
+<p>Examples:</p>
+<pre class="hljs"><code><div>&gt;:warning: Warning: Do not push the big red button.
+
+&gt;:memo: <span class="hljs-strong">**Note:**</span> Sunrises are beautiful.
+
+&gt;:bulb: <span class="hljs-strong">**Tip:**</span> Remember to appreciate the little things in life.
+
+</div></code></pre>
+<blockquote>
+<p><img class="emoji" alt="warning" src="data:image/png;base64,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" /> Warning: Do not push the big red button.</p>
+</blockquote>
+<blockquote>
+<p><img class="emoji" alt="memo" src="data:image/png;base64,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" /> <strong>Note:</strong> Sunrises are beautiful.</p>
+</blockquote>
+<blockquote>
+<p><img class="emoji" alt="bulb" src="data:image/png;base64,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" /> <strong>Tip:</strong> Remember to appreciate the little things in life.</p>
+</blockquote>
+
+</body>
+</html>
