@@ -1,2 +1,2 @@
-# -Markdown_In_A-_Day
+# Markdown_In_A_Day
 "Markdown essentials for document formatting
